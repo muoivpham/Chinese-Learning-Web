@@ -1,0 +1,88 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="http://vjs.zencdn.net/5.11.7/video-js.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/videojs-transcript.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/custom-videojs-player.css">
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://vjs.zencdn.net/5.11.7/video.js"></script>
+  <script src="javascripts/videojs-transcript.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <title>The translator</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid" style="background-color:#66171b;">
+    <div class="navbar-header" style="background-color:#66171b">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" style="margins:right;font-size:30px;color:white; padding: 10px 40px;" ><span class="glyphicon glyphicon-home"></span></a>
+    </div>
+
+    <div class="pull-right collapse navbar-collapse" id="navbar">
+    <ul class="nav navbar-nav fixed-top">
+          <li><a href="#property">Property</a></li>
+          <li><a href="#villas">The Villas</a></li>
+          <li><a href="#service">Our Services</a></li>
+          <li><a href="#priceList">Price list</a></li>
+          <li><a href="#contact">Contact/Booking</a></li>
+    </ul>
+  </div>
+
+  </div>
+</nav>
+
+  <h1>The translator</h1>
+  
+
+<div id="video-player">
+    <div id="left-container">
+      <!-- container div that is sized by script -->
+      <video id="video1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" data-setup='{"playbackRates": [0.5, 1, 1.5, 2]}'>
+        <source src="videos/clip1.mp4" type="video/mp4">
+        <!-- by using "metadata" as the kind, it will suppress the video player's own caption display -->
+        <track id="default" label="Chinese" kind="captions" srclang="zh-Hans" src="subtitles/Chinese.vtt">
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+      <div id="display1"></div>
+      <div id="display2"></div>
+    </div>
+    <div id="right-container">
+      <div id="transcript"></div>
+    </div>
+  </div>
+  <div id="dictionary"></div>
+
+  <script src="javascripts/subtitles.js"></script>
+  <script src="javascripts/transcripts.js"></script>
+  <script>
+    $(function(){
+      let $refreshButton = $('#refresh');
+      let $results = $('#css_result');
+
+      function refresh(){
+        let css = $('style.cp-pen-styles').text();
+        $results.html(css);
+      }
+
+      refresh();
+      $refreshButton.click(refresh);
+      
+      // Select all the contents when clicked
+      $results.click(function(){
+        $(this).select();
+      });
+    });
+  </script>
+</body>
